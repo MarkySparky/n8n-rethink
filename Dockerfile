@@ -14,8 +14,8 @@ RUN apt-get update && \
         build-essential && \
     rm -rf /var/lib/apt/lists/*
 
-    # Optional: install Python packages (extend later)
-RUN pip3 install --no-cache-dir numpy pandas
+# Optional: install Python packages (extend later)
+RUN pip3 install --no-cache-dir --break-system-packages numpy pandas
 
 # Install n8n and global node tools
 RUN npm install -g n8n lodash slugify axios
