@@ -1,14 +1,25 @@
-FROM node:22-slim
+# Use official Node 22 slim image
+FROM node:23-slim
 
 ARG N8N_VERSION=1.89.2
 
-RUN apk add --update graphicsmagick tzdata
-
 USER root
 
-RUN apk --update add --virtual build-dependencies python3 build-base && \
-    npm_config_user=root npm install --location=global n8n@${N8N_VERSION} && \
-    apk del build-dependencies
+# Install system-level dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        python3 \
+        python3-pip \
+        gdal-bin \
+        build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+    # Optional: install Python packages (extend later)
+RUN pip3 install --no-cache-dir numpy pandas
+
+# Install n8n and global node tools
+RUN npm install -g n8n lodash slugify axios
+
 
 WORKDIR /data
 
