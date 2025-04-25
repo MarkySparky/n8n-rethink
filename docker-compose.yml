@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.9"
 
 services:
   n8n:
@@ -20,7 +20,7 @@ services:
       - postgres
 
   postgres:
-    image: postgres:12
+    image: postgres:15
     environment:
       - POSTGRES_DB=n8n
       - POSTGRES_USER=n8n

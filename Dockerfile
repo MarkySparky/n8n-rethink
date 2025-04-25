@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:22-slim
 
 ARG N8N_VERSION=1.89.2
 
