@@ -1,5 +1,5 @@
 # Use official Node 22 slim image
-FROM node:23-slim
+FROM node:22-slim
 
 ARG N8N_VERSION=1.89.2
 
